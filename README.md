@@ -2,6 +2,10 @@
 
 TypeScript SDK for interacting with the `micro-polls` Clarity contract.
 
+## Deployed Mainnet Contract
+
+- Contract ID: `SP2V3QE7H5D09N108CJ4QPS281Z3XAZVD87R8FJ27.micro-polls`
+
 ## Features
 
 - Typed read-only helpers for poll metadata, options, tallies, and vote state
@@ -12,17 +16,21 @@ TypeScript SDK for interacting with the `micro-polls` Clarity contract.
 ## Installation
 
 ```bash
-npm install tangerine-signal-sdk @stacks/transactions
+npm install @praiseafk/tangerine-signal-sdk @stacks/transactions
 ```
 
 ## Quick start
 
 ```ts
-import { MicroPollsSDK } from "tangerine-signal-sdk";
+import {
+  MICRO_POLLS_CONTRACT_NAME,
+  MICRO_POLLS_MAINNET_CONTRACT_ADDRESS,
+  MicroPollsSDK,
+} from "@praiseafk/tangerine-signal-sdk";
 
 const sdk = new MicroPollsSDK({
-  contractAddress: "SP123...",
-  contractName: "micro-polls",
+  contractAddress: MICRO_POLLS_MAINNET_CONTRACT_ADDRESS,
+  contractName: MICRO_POLLS_CONTRACT_NAME,
   network: "mainnet",
   apiBaseUrl: "https://api.hiro.so",
 });
@@ -83,7 +91,7 @@ npm pack --dry-run
 
 ## Publish to npm
 
-Before first publish, set your npm account details in `package.json` (`author`, optional `repository`, `homepage`, and `bugs`).
+Before first publish, verify you are logged into the intended npm account and that package names are available.
 
 ```bash
 npm login

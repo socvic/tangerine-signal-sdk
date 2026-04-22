@@ -1,63 +1,54 @@
 {
   "name": "tangerine-signal-sdk",
-  "version": "0.1.0",
-  "description": "TypeScript SDK for micro-polls Clarity contract interactions on Stacks.",
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "version": "0.1.1",
+  "description": "TypeScript SDK for micro-polls Clarity contract interactions on the Stacks blockchain",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     }
   },
   "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
+    "dist"
   ],
-  "sideEffects": false,
   "scripts": {
-    "clean": "rimraf dist",
     "build": "tsup",
     "dev": "tsup --watch",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "prepublishOnly": "npm run clean && npm run lint && npm run typecheck && npm run test && npm run build",
-    "pack:check": "npm pack --dry-run",
-    "publish:dry-run": "npm publish --dry-run --access public"
+    "test:client": "vitest run test/client.test.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src test --ext .ts",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "stacks",
+    "blockchain",
+    "bitcoin",
+    "micro-polls",
     "clarity",
-    "polls",
-    "sdk",
-    "web3"
+    "stx",
+    "sdk"
   ],
-  "author": "",
+  "author": "Tangerine",
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/socvic/tangerine-signal-sdk"
   },
-  "engines": {
-    "node": ">=18"
-  },
-  "packageManager": "npm@10",
   "dependencies": {
     "@stacks/transactions": "^7.4.0"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/node": "^25.6.0",
-    "eslint": "^10.2.0",
-    "rimraf": "^6.1.3",
-    "tsup": "^8.5.1",
-    "typescript": "^6.0.2",
-    "typescript-eslint": "^8.58.2",
-    "vitest": "^4.1.4"
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.57.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0"
   }
 }
